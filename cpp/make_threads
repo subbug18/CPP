@@ -1,0 +1,5 @@
+CC=g++
+CFLAGS= -Wall -g -pthread 
+
+threads:	Threads.cpp
+	$(CC) $(CFLAGS)  -o threads Threads.cpp
