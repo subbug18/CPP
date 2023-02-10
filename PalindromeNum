@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <chrono>
+
+bool is_palindrome(int n) {
+  std::string s = std::to_string(n);
+  for (int i = 0; i < s.length() / 2; ++i) {
+    if (s[i] != s[s.length() - i - 1]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+int main() {
+    auto begin = std::chrono::time_num();
+  int largest_palindrome = 0;
+  for (int i = 999; i >= 100; --i) {
+    for (int j = 999; j >= i; --j) {
+      int product = i * j;
+      if (is_palindrome(product) && product > largest_palindrome) {
+        largest_palindrome = product;
+      }
+      if (product < largest_palindrome) {
+        break;
+      }
+    }
+  }
+  std::cout << largest_palindrome << std::endl;
+  return 0;
+}
